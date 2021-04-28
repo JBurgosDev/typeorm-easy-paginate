@@ -1,5 +1,5 @@
 import { IPaginationOptions } from "./interface/IPagination";
-import { EntityTarget, FindConditions, FindManyOptions, getRepository } from "typeorm";
+import { createConnection, EntityTarget, FindConditions, FindManyOptions, getManager } from "typeorm";
 import { paginationObject } from "./paginationObject";
 
 const DEFAULT_PAGE = 1;
@@ -12,7 +12,7 @@ export async function paginate<T>(
     return paginateRepository<T>(entityRepository, options, searchOptions)
 }
 
-function convertOptions<T>(options :IPaginationOptions): [number, number] {
+function convertOptions<T>(options: IPaginationOptions): [number, number] {
     let page: number | undefined;
     let perPage: number | undefined;
 
@@ -50,7 +50,9 @@ async function paginateRepository<T>(
         }
     }
 
-    const [items, total] = await getRepository<T>(entityRepository).findAndCount(objectOptions);
+    const connection = await createConnection();
+    const [items, total] = await connection.getRepository<T>(entityRepository).findAndCount(objectOptions);
+    await connection.close();
 
     return paginationObject<T>(items, page, perPage, total);
 }
