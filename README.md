@@ -2,7 +2,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/JBurgosDev/typeorm-easy-paginate)](https://github.com/JBurgosDev/typeorm-easy-paginate/stargazers)
 ![GitHub issues](https://img.shields.io/github/issues/JburgosDev/typeorm-easy-paginate?color=red)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/JburgosDev/typeorm-easy-paginate)
-# typeorm-easy-pagination
+# typeorm-easy-paginate
 The fast and easy way to create paging objects in Express with TypeORM
 
 ## Installation
