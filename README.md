@@ -36,7 +36,7 @@ import { paginate } from "typeorm-easy-paginate";
 export class exampleController {
     public async example(req: Request, res: Response) {
         
-        /* Replace de 'Example' with your entity */
+        /* Replace 'Example' with your entity */
         const paginateList = await paginate<Example>(Example, { /*Paginate options here*/ }, {/*TypeOrm repository querys here*/});
 
         return res.json(paginateList)
